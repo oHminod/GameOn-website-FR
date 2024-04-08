@@ -107,7 +107,9 @@ a.icon {
         position: absolute;
         right: 0;
         top: 0;
+        color: #fff;
     }
+
     .topnav.responsive a {
         float: none;
         display: block;

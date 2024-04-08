@@ -1,9 +1,12 @@
 function editNav() {
     var x = document.getElementById("myTopnav");
+    var y = document.getElementById("navIcon");
     if (x.className === "topnav") {
         x.className += " responsive";
+        y.className = "fa fa-times";
     } else {
         x.className = "topnav";
+        y.className = "fa fa-bars";
     }
 }
 
