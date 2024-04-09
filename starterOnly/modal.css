@@ -34,6 +34,7 @@ img {
     /* overflow: hidden; */
     margin: 3.5%;
     margin-right: 0;
+    min-height: 3rem;
 }
 .header-logo {
     float: left;
@@ -77,18 +78,21 @@ img {
 a.icon {
     color: #ff0000;
 }
-
+@media screen and (max-width: 768px) {
+    .header-logo img {
+        width: 103px;
+    }
+    .topnav a {
+        margin-top: -15px;
+    }
+}
 @media screen and (max-width: 1060px) {
     .topnav a {
         display: none;
-        margin-top: -15px;
     }
     .topnav a.icon {
         float: right;
         display: block;
-    }
-    .header-logo img {
-        width: 103px;
     }
     .topnav a.icon {
         float: right;
@@ -102,11 +106,23 @@ a.icon {
 @media screen and (max-width: 1060px) {
     .topnav.responsive {
         position: relative;
+        padding-bottom: 8.5px;
+    }
+    .responsive .menu {
+        position: absolute;
+        top: 0;
+        margin: 3.5%;
+        margin-top: 0;
+        margin-right: 0;
+        right: 0;
+        z-index: 10;
+        background-color: #f9f9f9;
+        border-radius: 2rem;
     }
     .topnav.responsive .icon {
         position: absolute;
-        right: 0;
         top: 0;
+        right: 0;
         color: #fff;
     }
 
@@ -460,7 +476,7 @@ input[data-error]::after {
     font-weight: normal;
     white-space: nowrap;
 }
-@media screen and (max-width: 1111px) {
+@media screen and (max-width: 1060px) {
     .hero-headline {
         font-size: 4rem;
     }
@@ -524,14 +540,16 @@ footer {
     .hero-headline {
         font-size: 2rem;
         white-space: normal;
+        margin-top: -2rem;
     }
     .hero-text {
         width: unset;
         font-size: 0.8rem;
+        margin-top: 1rem;
     }
     .hero-img img {
         border-radius: 10px;
-        margin-top: 40px;
+        margin-top: 1rem;
     }
     .hero-section > .btn-signup {
         display: block;
@@ -539,8 +557,19 @@ footer {
         padding: 12px 35px;
     }
     .copyrights {
-        margin-top: 50px;
+        margin-top: 1rem;
         text-align: center;
+    }
+    .responsive .menu {
+        position: absolute;
+        top: 0;
+        margin: 3.5%;
+        margin-top: 0;
+        margin-right: 0;
+        right: 0;
+        z-index: 10;
+        background-color: #f9f9f9;
+        border-radius: 2rem;
     }
 }
 

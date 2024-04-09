@@ -1,12 +1,12 @@
 function editNav() {
-    var x = document.getElementById("myTopnav");
-    var y = document.getElementById("navIcon");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-        y.className = "fa fa-times";
+    const topNav = document.getElementById("myTopnav");
+    const navIcon = document.getElementById("navIcon");
+    if (topNav.className === "topnav") {
+        topNav.className += " responsive";
+        navIcon.className = "fa fa-times";
     } else {
-        x.className = "topnav";
-        y.className = "fa fa-bars";
+        topNav.className = "topnav";
+        navIcon.className = "fa fa-bars";
     }
 }
 
@@ -15,6 +15,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
+const form = document.getElementById("form");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -30,4 +31,12 @@ function launchModal() {
 // close modal form
 function closeModal() {
     modalbg.style.display = "none";
+}
+
+function validate(e) {
+    e.preventDefault();
+    if (true) {
+        form.innerHTML = "";
+        form.style.height = "70vh";
+    }
 }
