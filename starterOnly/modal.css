@@ -125,6 +125,7 @@ a.icon {
         top: 0;
         right: 0;
         color: #fff;
+        background-color: transparent;
     }
 
     .topnav.responsive a {
@@ -263,6 +264,10 @@ input {
 }
 .formData[data-error-visible="true"] .text-control {
     border: 2px solid #e54858;
+}
+.error {
+    font-size: 0.6em;
+    color: #e54858;
 }
 /* 
 input[data-error]::after {
