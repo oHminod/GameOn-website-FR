@@ -1,4 +1,5 @@
-function editNav() {
+// Toggle dropdown menu
+function toggleNav() {
     const topNav = document.getElementById("myTopnav");
     const navIcon = document.getElementById("navIcon");
     if (topNav.className === "topnav") {
@@ -16,6 +17,23 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
 const form = document.getElementById("form");
+
+// Launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+// Close modal event
+closeBtn.addEventListener("click", closeModal);
+
+// Launch modal form
+function launchModal() {
+    modalbg.style.display = "block";
+}
+
+// Close modal form
+function closeModal() {
+    modalbg.style.display = "none";
+}
+
 // Inputs Wrappers Elements
 const firstNameWrapper = document.getElementById("firstNameWrapper");
 const lastNameWrapper = document.getElementById("lastNameWrapper");
@@ -38,19 +56,14 @@ const location5 = document.getElementById("location5");
 const location6 = document.getElementById("location6");
 const terms = document.getElementById("checkbox1");
 
+// Regex for input validation
 const nameRegex = /^[a-zA-Z]{2,}([a-zA-Z]*[' -]?[a-zA-Z]+)*$/;
 const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 const birthdateRegex =
     /^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
 const quantityRegex = /^(?!$)\d+$/;
 
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// close modal event
-closeBtn.addEventListener("click", closeModal);
-
-// inputs validation events
+// Inputs validation events
 firstName.addEventListener("input", validateFirstName);
 lastName.addEventListener("input", validateLastName);
 email.addEventListener("input", validateEmail);
@@ -64,21 +77,13 @@ location5.addEventListener("change", validateLocation);
 location6.addEventListener("change", validateLocation);
 terms.addEventListener("change", validateTerms);
 
-// launch modal form
-function launchModal() {
-    modalbg.style.display = "block";
-}
-
-// close modal form
-function closeModal() {
-    modalbg.style.display = "none";
-}
-
+// Inputs validation
 function validateFirstName() {
     const existingError = firstNameWrapper.querySelector(".error");
     if (existingError) {
         existingError.remove();
     }
+
     if (!nameRegex.test(firstName.value)) {
         if (existingError) {
             existingError.remove();
@@ -101,6 +106,7 @@ function validateLastName() {
     if (existingError) {
         existingError.remove();
     }
+
     if (!nameRegex.test(lastName.value)) {
         if (existingError) {
             existingError.remove();
@@ -123,6 +129,7 @@ function validateEmail() {
     if (existingError) {
         existingError.remove();
     }
+
     if (!emailRegex.test(email.value)) {
         if (existingError) {
             existingError.remove();
@@ -144,6 +151,7 @@ function validateBirthdate() {
     if (existingError) {
         existingError.remove();
     }
+
     if (!birthdateRegex.test(birthdate.value)) {
         if (existingError) {
             existingError.remove();
@@ -162,10 +170,10 @@ function validateBirthdate() {
 
 function validateQuantity() {
     const existingError = quantityWrapper.querySelector(".error");
-    console.log("quantity", quantityRegex.test(quantity.value));
     if (existingError) {
         existingError.remove();
     }
+
     if (!quantityRegex.test(quantity.value)) {
         if (existingError) {
             existingError.remove();
@@ -191,8 +199,7 @@ function validateLocation() {
         location5.checked,
         location6.checked,
     ];
-
-    const oneLocationIsChecked =
+    const onlyOneLocationIsChecked =
         checkedLocations.filter((location) => location).length === 1;
 
     const existingError = locationWrapper.querySelector(".error");
@@ -200,7 +207,7 @@ function validateLocation() {
         existingError.remove();
     }
 
-    if (!oneLocationIsChecked) {
+    if (!onlyOneLocationIsChecked) {
         if (existingError) {
             existingError.remove();
         }
@@ -236,6 +243,7 @@ function validateTerms() {
     }
 }
 
+// Form validation
 function validate(e) {
     e.preventDefault();
     const isFirstNameValid = validateFirstName();
