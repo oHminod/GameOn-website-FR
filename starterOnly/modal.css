@@ -504,7 +504,6 @@ input[data-error]::after {
     height: 100%;
     display: block;
     padding: 0;
-    /* object-fit: fill; */
 }
 .copyrights {
     color: #fe142f;
@@ -516,6 +515,26 @@ input[data-error]::after {
 .hero-section > .btn-signup {
     display: none;
 }
+
+.success {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.close-button-wrapper {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 footer {
     padding-left: 2vw;
     padding-right: 2vw;
@@ -559,17 +578,6 @@ footer {
     .copyrights {
         margin-top: 1rem;
         text-align: center;
-    }
-    .responsive .menu {
-        position: absolute;
-        top: 0;
-        margin: 3.5%;
-        margin-top: 0;
-        margin-right: 0;
-        right: 0;
-        z-index: 10;
-        background-color: #f9f9f9;
-        border-radius: 2rem;
     }
 }
 
