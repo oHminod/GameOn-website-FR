@@ -130,6 +130,9 @@ a.icon {
     }
     .main-navbar {
         margin-right: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
     }
 }
 

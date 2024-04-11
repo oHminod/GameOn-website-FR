@@ -42,15 +42,16 @@ const location6 = document.getElementById("location6");
 const terms = document.getElementById("checkbox1");
 
 const searchParams = new URLSearchParams(window.location.search);
-const firstP = searchParams.get("first");
-const lastP = searchParams.get("last");
-const emailP = searchParams.get("email");
-const birthdateP = searchParams.get("birthdate");
-const quantityP = searchParams.get("quantity");
-const cityP = searchParams.get("city");
-const termsP = searchParams.get("terms");
 
 function init() {
+    const firstP = searchParams.get("first");
+    const lastP = searchParams.get("last");
+    const emailP = searchParams.get("email");
+    const birthdateP = searchParams.get("birthdate");
+    const quantityP = searchParams.get("quantity");
+    const cityP = searchParams.get("city");
+    const termsP = searchParams.get("terms");
+
     if (firstP) {
         firstName.value = firstP;
     }
@@ -65,7 +66,10 @@ function init() {
     }
     if (quantityP) {
         quantity.value = quantityP;
+    } else {
+        quantity.value = 0;
     }
+
     if (cityP) {
         switch (cityP) {
             case "NY":
@@ -88,6 +92,7 @@ function init() {
                 break;
         }
     }
+
     if (termsP) {
         if (termsP === "true") terms.checked = true;
         if (termsP === "false") terms.checked = false;
@@ -142,20 +147,18 @@ function validateFirstName() {
         existingError.remove();
     }
 
+    searchParams.set("first", firstName.value);
+    history.pushState(null, "", "?" + searchParams.toString());
+
     if (!nameRegex.test(firstName.value)) {
-        if (existingError) {
-            existingError.remove();
-        }
         firstName.style.border = "2px solid red";
         const error = document.createElement("p");
         error.classList.add("error");
-        error.innerHTML =
+        error.innerText =
             "Veuillez entrer un prénom valide. (Au moins deux caractères)";
         firstNameWrapper.appendChild(error);
         return false;
     } else {
-        searchParams.set("first", firstName.value);
-        history.pushState(null, "", "?" + searchParams.toString());
         firstName.style.border = "2px solid transparent";
         return true;
     }
@@ -167,20 +170,18 @@ function validateLastName() {
         existingError.remove();
     }
 
+    searchParams.set("last", lastName.value);
+    history.pushState(null, "", "?" + searchParams.toString());
+
     if (!nameRegex.test(lastName.value)) {
-        if (existingError) {
-            existingError.remove();
-        }
         lastName.style.border = "2px solid red";
         const error = document.createElement("p");
         error.classList.add("error");
-        error.innerHTML =
+        error.innerText =
             "Veuillez entrer un nom valide. (Au moins deux caractères)";
         lastNameWrapper.appendChild(error);
         return false;
     } else {
-        searchParams.set("last", lastName.value);
-        history.pushState(null, "", "?" + searchParams.toString());
         lastName.style.border = "2px solid transparent";
         return true;
     }
@@ -192,19 +193,17 @@ function validateEmail() {
         existingError.remove();
     }
 
+    searchParams.set("email", email.value);
+    history.pushState(null, "", "?" + searchParams.toString());
+
     if (!emailRegex.test(email.value)) {
-        if (existingError) {
-            existingError.remove();
-        }
         email.style.border = "2px solid red";
         const error = document.createElement("p");
         error.classList.add("error");
-        error.innerHTML = "Veuillez entrer une adresse email valide.";
+        error.innerText = "Veuillez entrer une adresse email valide.";
         emailWrapper.appendChild(error);
         return false;
     } else {
-        searchParams.set("email", email.value);
-        history.pushState(null, "", "?" + searchParams.toString());
         email.style.border = "2px solid transparent";
         return true;
     }
@@ -216,19 +215,17 @@ function validateBirthdate() {
         existingError.remove();
     }
 
+    searchParams.set("birthdate", birthdate.value);
+    history.pushState(null, "", "?" + searchParams.toString());
+
     if (!birthdateRegex.test(birthdate.value)) {
-        if (existingError) {
-            existingError.remove();
-        }
         birthdate.style.border = "2px solid red";
         const error = document.createElement("p");
         error.classList.add("error");
-        error.innerHTML = "Veuillez entrer une date de naissance valide.";
+        error.innerText = "Veuillez entrer une date de naissance valide.";
         birthdateWrapper.appendChild(error);
         return false;
     } else {
-        searchParams.set("birthdate", birthdate.value);
-        history.pushState(null, "", "?" + searchParams.toString());
         birthdate.style.border = "2px solid transparent";
         return true;
     }
@@ -240,19 +237,17 @@ function validateQuantity() {
         existingError.remove();
     }
 
+    searchParams.set("quantity", quantity.value);
+    history.pushState(null, "", "?" + searchParams.toString());
+
     if (!quantityRegex.test(quantity.value)) {
-        if (existingError) {
-            existingError.remove();
-        }
         quantity.style.border = "2px solid red";
         const error = document.createElement("p");
         error.classList.add("error");
-        error.innerHTML = "Veuillez entrer un nombre valide.";
+        error.innerText = "Veuillez entrer un nombre valide.";
         quantityWrapper.appendChild(error);
         return false;
     } else {
-        searchParams.set("quantity", quantity.value);
-        history.pushState(null, "", "?" + searchParams.toString());
         quantity.style.border = "2px solid transparent";
         return true;
     }
@@ -276,12 +271,9 @@ function validateLocation() {
     }
 
     if (!onlyOneLocationIsChecked) {
-        if (existingError) {
-            existingError.remove();
-        }
         const error = document.createElement("p");
         error.classList.add("error");
-        error.innerHTML = "Veuillez choisir une ville.";
+        error.innerText = "Veuillez choisir une ville.";
         locationWrapper.appendChild(error);
         return false;
     } else {
@@ -306,12 +298,9 @@ function validateTerms() {
     history.pushState(null, "", "?" + searchParams.toString());
 
     if (!checkedTerms) {
-        if (existingError) {
-            existingError.remove();
-        }
         const error = document.createElement("p");
         error.classList.add("error");
-        error.innerHTML = "Veuillez accepter les conditions d'utilisation.";
+        error.innerText = "Veuillez accepter les conditions d'utilisation.";
         termsWrapper.appendChild(error);
         return false;
     } else {
@@ -341,14 +330,14 @@ function validate(e) {
     ) {
         form.innerHTML = "";
         form.classList.add("success");
-        const text = document.createElement("p");
-        text.innerHTML = "Merci pour votre inscription.";
-        form.appendChild(text);
+        const successText = document.createElement("p");
+        successText.innerText = "Merci pour votre inscription.";
+        form.appendChild(successText);
         const closeButtonWrapper = document.createElement("div");
         closeButtonWrapper.classList.add("close-button-wrapper");
         form.appendChild(closeButtonWrapper);
         const closeButton = document.createElement("button");
-        closeButton.innerHTML = "Fermer";
+        closeButton.innerText = "Fermer";
         closeButton.classList.add("btn-submit");
         closeButton.addEventListener("click", closeModal);
         closeButtonWrapper.appendChild(closeButton);
