@@ -118,6 +118,10 @@ function launchModal() {
 function closeModal() {
     modalbg.style.display = "none";
 }
+function closeModalAfterSuccess() {
+    modalbg.style.display = "none";
+    window.location.reload();
+}
 
 // Inputs validation events
 firstName.addEventListener("input", validateFirstName);
@@ -339,7 +343,7 @@ function validate(e) {
         const closeButton = document.createElement("button");
         closeButton.innerText = "Fermer";
         closeButton.classList.add("btn-submit");
-        closeButton.addEventListener("click", closeModal);
+        closeButton.addEventListener("click", closeModalAfterSuccess);
         closeButtonWrapper.appendChild(closeButton);
     }
 }
