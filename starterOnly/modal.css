@@ -141,6 +141,19 @@ a.icon {
         position: relative;
         padding-bottom: 8.5px;
     }
+    /* For Chrome */
+    @media screen and (-webkit-min-device-pixel-ratio: 0) {
+        .topnav.responsive {
+            padding-bottom: 8.5px;
+        }
+    }
+    /* For Firefox */
+    @-moz-document url-prefix() {
+        .topnav.responsive {
+            padding-bottom: 7px;
+        }
+    }
+
     .responsive .menu {
         position: absolute;
         top: 0;

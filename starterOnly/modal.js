@@ -344,6 +344,8 @@ function validate(e) {
         closeButton.innerText = "Fermer";
         closeButton.classList.add("btn-submit");
         closeButton.addEventListener("click", closeModalAfterSuccess);
+        closeBtn.removeEventListener("click", closeModal);
+        closeBtn.addEventListener("click", closeModalAfterSuccess);
         closeButtonWrapper.appendChild(closeButton);
     }
 }
