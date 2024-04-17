@@ -1,4 +1,8 @@
-// Toggle dropdown menu
+/**
+ * Toggles the navigation menu in a responsive design.
+ * When the navigation menu ("myTopnav") is in its default state, it adds the "responsive" class to it and changes the navigation icon to a "close" icon.
+ * When the navigation menu is in its "responsive" state, it reverts it back to its default state and changes the navigation icon to a "menu" icon.
+ */
 function toggleNav() {
     const topNav = document.getElementById("myTopnav");
     const navIcon = document.getElementById("navIcon");
@@ -43,6 +47,14 @@ const terms = document.getElementById("checkbox1");
 
 const searchParams = new URLSearchParams(window.location.search);
 
+/**
+ * Initializes the form fields with values from the URL search parameters.
+ *
+ * The function retrieves the search parameters from the URL and assigns them to the corresponding form fields.
+ * If a search parameter is not present, it assigns a default value to the corresponding form field.
+ * For the 'city' search parameter, it checks the value and selects the corresponding radio button.
+ * For the 'terms' search parameter, it checks the value and sets the 'terms' checkbox accordingly.
+ */
 function init() {
     const firstP = searchParams.get("first");
     const lastP = searchParams.get("last");
@@ -138,14 +150,40 @@ location6.addEventListener("change", validateLocation);
 terms.addEventListener("change", validateTerms);
 
 // Regex for input validation
+/**
+ * @const {RegExp} nameRegex - Regular expression for validating names.
+ * It allows names that start with a letter (including accented letters and ç), followed by zero or more letters, apostrophes, spaces, or hyphens, and ending with a letter.
+ */
 const nameRegex =
     /^[a-zA-Zà-ÿÀ-ÝçÇ]([a-zA-Zà-ÿÀ-ÝçÇ]*[' -]?[a-zA-Zà-ÿÀ-ÝçÇ]+)+$/;
+
+/**
+ * @const {RegExp} emailRegex - Regular expression for validating emails.
+ * It allows emails that start with one or more alphanumeric characters, dots, underscores, or hyphens, followed by an @ symbol, followed by one or more alphanumeric characters, dots, or hyphens, followed by a dot, and ending with two to four letters.
+ */
 const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+/**
+ * @const {RegExp} birthdateRegex - Regular expression for validating birthdates.
+ * It allows birthdates in the format YYYY-MM-DD, where YYYY starts with 19 or 20, MM is a number between 01 and 12, and DD is a number between 01 and 31.
+ */
 const birthdateRegex =
     /^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
+
+/**
+ * @const {RegExp} quantityRegex - Regular expression for validating quantities.
+ * It allows quantities that are one or more digits, but not an empty string or any other character.
+ */
 const quantityRegex = /^(?!$)\d+$/;
 
 // Inputs validation
+/**
+ * Validates the first name input field and updates the URL search parameters.
+ *
+ * This function first removes any existing error message. It then updates the URL search parameters with the current value of the first name input field.
+ * If the first name does not pass the validation (it must match the nameRegex pattern), it changes the border of the input field to red, creates an error message, and returns false.
+ * If the first name passes the validation, it changes the border of the input field to transparent and returns true.
+ */
 function validateFirstName() {
     const existingError = firstNameWrapper.querySelector(".error");
     if (existingError) {
@@ -169,6 +207,13 @@ function validateFirstName() {
     }
 }
 
+/**
+ * Validates the last name input field and updates the URL search parameters.
+ *
+ * This function first removes any existing error message. It then updates the URL search parameters with the current value of the last name input field.
+ * If the last name does not pass the validation (it must match the nameRegex pattern), it changes the border of the input field to red, creates an error message, and returns false.
+ * If the last name passes the validation, it changes the border of the input field to transparent and returns true.
+ */
 function validateLastName() {
     const existingError = lastNameWrapper.querySelector(".error");
     if (existingError) {
@@ -192,6 +237,13 @@ function validateLastName() {
     }
 }
 
+/**
+ * Validates the email input field and updates the URL search parameters.
+ *
+ * This function first removes any existing error message. It then updates the URL search parameters with the current value of the email input field.
+ * If the email does not pass the validation (it must match the emailRegex pattern), it changes the border of the input field to red, creates an error message, and returns false.
+ * If the email passes the validation, it changes the border of the input field to transparent and returns true.
+ */
 function validateEmail() {
     const existingError = emailWrapper.querySelector(".error");
     if (existingError) {
@@ -214,6 +266,13 @@ function validateEmail() {
     }
 }
 
+/**
+ * Validates the birthdate input field and updates the URL search parameters.
+ *
+ * This function first removes any existing error message. It then updates the URL search parameters with the current value of the birthdate input field.
+ * If the birthdate does not pass the validation (it must match the birthdateRegex pattern), it changes the border of the input field to red, creates an error message, and returns false.
+ * If the birthdate passes the validation, it changes the border of the input field to transparent and returns true.
+ */
 function validateBirthdate() {
     const existingError = birthdateWrapper.querySelector(".error");
     if (existingError) {
@@ -236,6 +295,13 @@ function validateBirthdate() {
     }
 }
 
+/**
+ * Validates the quantity input field and updates the URL search parameters.
+ *
+ * This function first removes any existing error message. It then updates the URL search parameters with the current value of the quantity input field.
+ * If the quantity does not pass the validation (it must match the quantityRegex pattern), it changes the border of the input field to red, creates an error message, and returns false.
+ * If the quantity passes the validation, it changes the border of the input field to transparent and returns true.
+ */
 function validateQuantity() {
     const existingError = quantityWrapper.querySelector(".error");
     if (existingError) {
@@ -258,6 +324,13 @@ function validateQuantity() {
     }
 }
 
+/**
+ * Validates the location radio buttons and updates the URL search parameters.
+ *
+ * This function first removes any existing error message. It then checks if exactly one location radio button is checked.
+ * If not, it creates an error message and returns false.
+ * If exactly one location radio button is checked, it updates the URL search parameters with the corresponding city value and returns true.
+ */
 function validateLocation() {
     const checkedLocations = [
         location1.checked,
@@ -291,6 +364,13 @@ function validateLocation() {
     }
 }
 
+/**
+ * Validates the terms checkbox and updates the URL search parameters.
+ *
+ * This function first removes any existing error message. It then checks if the terms checkbox is checked.
+ * If not, it creates an error message and returns false.
+ * If the terms checkbox is checked, it updates the URL search parameters with the corresponding value and returns true.
+ */
 function validateTerms() {
     const checkedTerms = terms.checked;
 
@@ -314,6 +394,14 @@ function validateTerms() {
 }
 
 // Form validation
+/**
+ * Validates the form and updates the UI accordingly.
+ *
+ * This function first prevents the default form submission. It then validates each form field using the corresponding validation function.
+ * If all form fields are valid, it clears the form, adds the "success" class to the form, and creates a success message.
+ * It also creates a close button that, when clicked, closes the modal and removes the event listener from the original close button.
+ * If any form field is not valid, it does nothing.
+ */
 function validate(e) {
     e.preventDefault();
     const isFirstNameValid = validateFirstName();
