@@ -138,7 +138,8 @@ location6.addEventListener("change", validateLocation);
 terms.addEventListener("change", validateTerms);
 
 // Regex for input validation
-const nameRegex = /^[a-zA-Z]([a-zA-Z]*[' -]?[a-zA-Z]+)+$/;
+const nameRegex =
+    /^[a-zA-Zà-ÿÀ-ÝçÇ]([a-zA-Zà-ÿÀ-ÝçÇ]*[' -]?[a-zA-Zà-ÿÀ-ÝçÇ]+)+$/;
 const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 const birthdateRegex =
     /^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
