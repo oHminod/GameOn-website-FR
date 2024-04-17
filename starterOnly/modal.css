@@ -31,24 +31,20 @@ img {
 }
 
 .topnav {
-    /* overflow: hidden; */
     margin: 3.5%;
     margin-right: 0;
-    min-height: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.header-logo {
-    float: left;
-}
+
 .header-logo img {
     width: 255px;
     height: auto;
 }
-.main-navbar {
-    float: right;
-    /* margin-right: -50px; */
-}
+
 .topnav a {
-    float: left;
     display: block;
     color: #000000;
     text-align: center;
@@ -78,24 +74,28 @@ img {
 a.icon {
     color: #ff0000;
 }
+
+.menu-wrapper {
+    position: relative;
+    height: 57px;
+}
+.main-navbar {
+    display: flex;
+}
 @media screen and (max-width: 768px) {
     .header-logo img {
         width: 131px;
     }
-    .topnav a.icon {
-        margin-top: -15px;
-    }
+
     .topnav.responsive {
         position: relative;
-        padding-bottom: 8.5px;
     }
     .responsive .menu {
         position: absolute;
-        top: 0;
+        top: 5px;
         margin: 3.5%;
-        margin-top: -15px;
-        margin-right: 5px;
-        right: 0;
+        min-width: 200px;
+        right: 5px;
         z-index: 10;
         background-color: #f9f9f9;
         border-radius: 15px;
@@ -139,28 +139,14 @@ a.icon {
 @media screen and (max-width: 1060px) and (min-width: 768px) {
     .topnav.responsive {
         position: relative;
-        padding-bottom: 8.5px;
-    }
-    /* For Chrome */
-    @media screen and (-webkit-min-device-pixel-ratio: 0) {
-        .topnav.responsive {
-            padding-bottom: 8.5px;
-        }
-    }
-    /* For Firefox */
-    @-moz-document url-prefix() {
-        .topnav.responsive {
-            padding-bottom: 7px;
-        }
     }
 
     .responsive .menu {
         position: absolute;
-        top: 0;
+        top: 5px;
+        right: 5px;
+        min-width: 200px;
         margin: 3.5%;
-        margin-top: 5px;
-        margin-right: 5px;
-        right: 0;
         z-index: 10;
         background-color: #f9f9f9;
         border-radius: 15px;
@@ -509,12 +495,9 @@ input[data-error]::after {
     color: #fff;
     position: relative;
     text-align: left;
-    /* min-width: 424px; */
 }
 .hero-content::after {
     content: "";
-    /* width: 100%;
-    height: 100%; */
     background: #232323;
     position: absolute;
     right: -80px;
